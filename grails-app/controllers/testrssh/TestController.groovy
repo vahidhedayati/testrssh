@@ -13,8 +13,8 @@ class TestController implements GrailsApplicationAware {
 
 		
             RemoteSSH rsh=new RemoteSSH()
-            rsh.setHost('longtct03but')
-	rsh.setUser('103374')
+            rsh.setHost('someHOST')
+	rsh.setUser('someUSER')
             rsh.setPort(22)
             rsh.setUsercommand('whoami')
             def g=rsh.Result(sshConfig)
