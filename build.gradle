@@ -71,7 +71,7 @@ dependencies {
     testRuntime 'org.seleniumhq.selenium:selenium-htmlunit-driver:2.44.0'
 
     console "org.grails:grails-console"
-	// compile "org.grails.plugins:remotessh:0.4"
+	//compile "org.grails.plugins:remotessh:0.5"
 	compile project(':remotessh')
   
 

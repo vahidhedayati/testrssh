@@ -1,24 +1,26 @@
 package testrssh
 
 import grails.core.GrailsApplication
-import grails.core.support.GrailsApplicationAware
 import grails.plugin.remotessh.RemoteSSH
 
-class TestController implements GrailsApplicationAware {
-   GrailsApplication grailsApplication
-    def sshConfig
+class TestController {
 
-        def index() {
-          int port=22
+    GrailsApplication grailsApplication
 
-		
-            RemoteSSH rsh=new RemoteSSH()
-            rsh.setHost('someHOST')
-	rsh.setUser('someUSER')
-            rsh.setPort(22)
-            rsh.setUsercommand('whoami')
-            def g=rsh.Result(sshConfig)
-		render "---- $g"
-       }
+
+    def index() {
+
+        ConfigObject remotessh = grailsApplication.config.remotessh
+
+        RemoteSSH rsh = new RemoteSSH()
+        rsh.setHost('somehost')
+        rsh.setPort(22)
+        rsh.setUsercommand('hostname -s && uname -a && whoami')
+        def g = rsh.Result(remotessh)
+        render "---- $g"
+
     }
+
+}
+
 
