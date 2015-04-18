@@ -1,23 +1,19 @@
 package testrssh
 
-import grails.core.GrailsApplication
 import grails.plugin.remotessh.RemoteSSH
 
 class TestController {
 
-    GrailsApplication grailsApplication
-
+    def sshConfig
 
     def index() {
-
-        ConfigObject remotessh = grailsApplication.config.remotessh
-
         RemoteSSH rsh = new RemoteSSH()
-        rsh.setHost('somehost')
+        rsh.setHost('localhost')
         rsh.setPort(22)
-        rsh.setUsercommand('hostname -s && uname -a && whoami')
-        def g = rsh.Result(remotessh)
-        render "---- $g"
+        rsh.setUsercommand('whoami')
+        def g = rsh.Result(sshConfig)
+
+        render "---- ${g}"
 
     }
 
