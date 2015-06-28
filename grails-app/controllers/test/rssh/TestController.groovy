@@ -35,38 +35,28 @@ class TestController {
 
 	def reusingConnection(RsshValidate pm) {
 		StringBuilder output = new StringBuilder()
-		String host = pm.host
-		def sshport = pm.sshport
-		File keyfile = pm.keyfile
-		String sshkeypass = pm.sshkeypass
-		String sshuser = pm.sshuser
-		String sshpass = pm.sshpass
-		String usercommand = pm.usercommand
-		String sudo = pm.sudo
-		String filter = pm.filter
-		String splitter = pm.splitter
 		// Do initial connection------
 		try {
 			boolean connected = false
-			if (!session.conn && host && sshport) {
-				Connection conn = rsshService.connect(host,sshport as int)
+			if (!session.conn && pm.host && pm.sshport) {
+				Connection conn = rsshService.connect(pm.host,pm.sshport as int)
 				session.conn = conn
 				session.connected = true
 			}
 			boolean hasConnection=true
 			if (session.connected) {
-				if (usercommand) {
+				if (pm.usercommand) {
 					if (session.sess) {
-						println "-- reusing existing connection for $usercommand $session.conn "
-						output = rsshService.executeCommand(session.sess,session.conn, usercommand, splitter, sudo, filter, hasConnection)
+						println "-- reusing existing connection for $pm.usercommand $session.conn "
+						output = rsshService.executeCommand(session.sess,session.conn, pm.usercommand, pm.splitter, pm.sudo, pm.filter, hasConnection)
 					}
 				}else{
 					if (!session.sess) {
 						println "-- new session being created sending dummy connection"
-						Session sess = rsshService.openSession(session.conn, keyfile,sshkeypass,sshuser,sshpass)
+						Session sess = rsshService.openSession(session.conn, pm.keyfile,pm.sshkeypass,pm.sshuser,pm.sshpass)
 						session.sess = sess
 						hasConnection=false
-						output = rsshService.executeCommand(sess, session.conn,  'echo -n', splitter, sudo, '|', hasConnection)
+						output = rsshService.executeCommand(sess, session.conn,  'echo -n', pm.splitter, pm.sudo, '|', hasConnection)
 					}
 				}
 			}
