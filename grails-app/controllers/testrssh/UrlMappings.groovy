@@ -1,3 +1,5 @@
+package testrssh
+
 class UrlMappings {
 
     static mappings = {
