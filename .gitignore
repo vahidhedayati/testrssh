@@ -26,7 +26,6 @@ target/
 /.classpath
 /.project
 /.settings
-/cobertura.ser
 stacktrace.log
 *Db.properties
 *Db.script
