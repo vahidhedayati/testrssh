@@ -1,4 +1,4 @@
-package test.rssh
+package testee
 
 import grails.plugin.remotessh.RemoteSSH
 import grails.plugin.remotessh.RsshValidate
