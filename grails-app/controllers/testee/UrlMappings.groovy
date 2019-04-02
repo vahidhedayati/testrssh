@@ -1,4 +1,4 @@
-package testrssh
+package testee
 
 class UrlMappings {
 
