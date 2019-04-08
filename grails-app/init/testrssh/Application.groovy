@@ -1,4 +1,4 @@
-package testee
+package testrssh
 
 import grails.boot.GrailsApp
 import grails.boot.config.GrailsAutoConfiguration

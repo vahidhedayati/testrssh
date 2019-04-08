@@ -55,7 +55,7 @@ dependencies {
     runtime "com.h2database:h2"
 
     //LATEST PLUGIN
-    compile "org.grails.plugins:remotessh:3.0.7"
+    compile "org.grails.plugins:remotessh:3.0.9"
 
     //    compile project(':remotessh')
 

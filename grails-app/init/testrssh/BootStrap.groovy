@@ -1,4 +1,4 @@
-package testee
+package testrssh
 
 class BootStrap {
 
